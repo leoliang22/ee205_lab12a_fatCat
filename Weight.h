@@ -26,5 +26,14 @@ public: ////////////// Enumerations //////////////
     static const std::string POUND_LABEL ;
     static const std::string KILO_LABEL ;
     static const std::string SLUG_LABEL ;
+
+    static float fromKilogramToPound( float kilogram ) noexcept;
+    static float fromSlugToPound( float slug ) noexcept;
+    static float fromPoundToSlug( float pound ) noexcept;
+    static float fromPoundToKilogram( float pound ) noexcept;
+
+    static float convertWeight( float fromWeight
+            ,UnitOfWeight fromUnit
+            ,UnitOfWeight toUnit ) noexcept;
 };
 #endif //EE205_LAB12A_FATCAT_WEIGHT_H
