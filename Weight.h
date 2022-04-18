@@ -20,6 +20,16 @@ public: ////////////// Enumerations //////////////
     enum UnitOfWeight {
         POUND, KILO, SLUG
     };
+
+private:
+    float weight{};
+    float maxWeight{};
+    bool bIsKnown;
+    bool bHasMax;
+    enum UnitOfWeight unitOfWeight = POUND ;
+
+public:
+
     static const float KILOS_IN_A_POUND;
     static const float SLUGS_IN_A_POUND;
 
@@ -35,5 +45,31 @@ public: ////////////// Enumerations //////////////
     static float convertWeight( float fromWeight
             ,UnitOfWeight fromUnit
             ,UnitOfWeight toUnit ) noexcept;
+
+
+    Weight(UnitOfWeight newUnitOfWeight, const float newMaxWeight );
+
+    Weight() noexcept;
+
+    Weight(float weight);
+
+    Weight(UnitOfWeight newUnitofWeight ) noexcept;
+
+    Weight(float weight, UnitOfWeight unitOfWeight);
+
+    Weight(float weight, float maxWeight);
+
+    Weight(float weight, UnitOfWeight unitOfWeight, float maxWeight);
+
+    void setWeight(float weight);
+
+    void setMaxWeight(float maxWeight);
+
+    float getWeight() const;
+
+    UnitOfWeight getUnitOfWeight() const;
+
+    void setUnitOfWeight(UnitOfWeight unitOfWeight);
+
 };
 #endif //EE205_LAB12A_FATCAT_WEIGHT_H

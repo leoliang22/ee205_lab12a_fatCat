@@ -61,4 +61,59 @@ float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Wei
        default: std::cout << "Unknown toUnit ";
        return false;
    }
+
+
+}
+
+Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ) : Weight( newUnitOfWeight ){
+    setMaxWeight( newMaxWeight );
+}
+
+void Weight::setWeight(float weight) {
+    weight = weight;
+}
+
+void Weight::setMaxWeight(float maxWeight) {
+    Weight::maxWeight = maxWeight;
+}
+
+Weight::Weight(float weight) : weight(weight) {
+    setWeight( weight );
+}
+
+Weight::Weight(UnitOfWeight newUnitofWeight ) noexcept {
+    convertWeight(getWeight(), getUnitOfWeight(), newUnitofWeight );
+    setUnitOfWeight( newUnitofWeight );
+}
+
+float Weight::getWeight() const {
+    return weight;
 };
+
+Weight::Weight() noexcept{}
+
+Weight::UnitOfWeight Weight::getUnitOfWeight() const {
+    return unitOfWeight;
+}
+
+Weight::Weight(float weight, Weight::UnitOfWeight unitOfWeight) : weight(weight), unitOfWeight(unitOfWeight) {
+    convertWeight(weight, getUnitOfWeight(), unitOfWeight);
+    setUnitOfWeight( unitOfWeight );
+}
+
+Weight::Weight(float weight, float maxWeight) : weight(weight), maxWeight(maxWeight) {
+    setWeight( weight );
+    setMaxWeight( maxWeight);
+}
+
+void Weight::setUnitOfWeight(Weight::UnitOfWeight unitOfWeight) {
+    Weight::unitOfWeight = unitOfWeight;
+}
+
+Weight::Weight(float weight, Weight::UnitOfWeight unitOfWeight, float maxWeight) : weight(weight), maxWeight(maxWeight),
+                                                                                   unitOfWeight(unitOfWeight) {
+    setMaxWeight(maxWeight);
+    setUnitOfWeight( unitOfWeight );
+    convertWeight( weight, getUnitOfWeight(), unitOfWeight);
+}
+
